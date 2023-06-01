@@ -4,6 +4,7 @@ const cssmin = require('gulp-cssmin')
 const rename = require('gulp-rename')
 const uglify = require('gulp-uglify')
 const image = require('gulp-imagemin')
+const stripCss = require('gulp-strip-css-comments')
 
 
 function tarefasCSS(cb) {
@@ -32,13 +33,9 @@ function tarefasJS(){
             './node_modules/bootstrap/dist/js/bootstrap.js',
             './vendor/owl/js/owl.js',
             './vendor/jquery-mask/jquery.mask.js',
-            // './vendor/jquery-ui/jquery-ui.js',
+           // '.vendor/jquery-ui/jquery-ui.js',
             './src/js/custom.js'
-        ])
-        .pipe(babel({
-            comments: false,
-            presets: ['@babel/env']
-        }))
+        ])  
         .pipe(concat('scripts.js'))         // mescla arquivos
         .pipe(uglify())                     // minifica js
         .pipe(rename({ suffix: '.min'}))    // scripts.min.js
